@@ -17,8 +17,8 @@ function DeleteCourse({ coursename, getFilesFromBucket }) {
             bucketName: 'cg-courselist',
             dirName: 'courses',
             region: 'us-east-1',
-            accessKeyId: 'AKIAJAXL4KKUGRQD4XWA',
-            secretAccessKey: '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',
+            accessKeyId: '',
+            secretAccessKey: '',
         }
 
         console.log("deleting file");

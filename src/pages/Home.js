@@ -25,8 +25,8 @@ function Home(props) {
     const S3 = require('aws-sdk/clients/s3');
 
     AWS.config.update({
-      accessKeyId: 'AKIAJAXL4KKUGRQD4XWA',
-      secretAccessKey: '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',
+      accessKeyId: '',
+      secretAccessKey: '',
       region: 'us-east-1'
     });
 
