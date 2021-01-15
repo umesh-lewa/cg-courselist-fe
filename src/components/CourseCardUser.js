@@ -1,6 +1,6 @@
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Card, Icon, Label, Image,Input ,Popup} from 'semantic-ui-react';
+import { Button, Card, Icon, Label, Image, Input, Popup } from 'semantic-ui-react';
 
 import { AuthContext } from '../context/auth';
 
@@ -17,8 +17,8 @@ function CourseCardUser({ course, getFilesFromBucket }) {
     }, []);
 
     const getAllComments = async () => {
-        
-        console.log("course.Name : "+course.Name);
+
+        console.log("course.Name : " + course.Name);
 
         let courName = course.Name.toString();
         let cName = courName.split('/');
@@ -27,14 +27,14 @@ function CourseCardUser({ course, getFilesFromBucket }) {
             "CourseName": cName[1],
         }
 
-        console.log("allCommentData : "+JSON.stringify(allCommentData));
+        console.log("allCommentData : " + JSON.stringify(allCommentData));
 
-        let response = await fetch("https://cg-courselist-be.herokuapp.com/file/getComments/"+cName[1]);
+        let response = await fetch("https://cg-courselist-be.herokuapp.com/file/getComments/" + cName[1]);
 
         response = await response.json();
         if (response.stat === "200") {
 
-            console.log("response.result[0].COMMENTS : "+response.result[0].COMMENTS);
+            console.log("response.result[0].COMMENTS : " + response.result[0].COMMENTS);
             setAllComments(response.result[0].COMMENTS);
             return;
         } else {
@@ -47,13 +47,13 @@ function CourseCardUser({ course, getFilesFromBucket }) {
 
         setLoading(true);
 
-        
+
         const commentData = {
             "CourseName": course.Name,
             "Comment": currentComment
         }
 
-        console.log("commentData : "+JSON.stringify(commentData));
+        console.log("commentData : " + JSON.stringify(commentData));
 
         let response = await fetch("https://cg-courselist-be.herokuapp.com/file/addComment", {
             method: "POST",
@@ -65,7 +65,7 @@ function CourseCardUser({ course, getFilesFromBucket }) {
 
         response = await response.json();
         if (response.stat === "200") {
-            
+
             console.log("successfully added comment");
             getAllComments();
             return;
@@ -81,6 +81,11 @@ function CourseCardUser({ course, getFilesFromBucket }) {
         <Card fluid>
 
             <Card.Content>
+
+                <video width="450" height="300" controls >
+                    <source src= {course.URL} type="video/mp4" />
+                </video>
+
                 <Image
                     floated="right"
                     size="mini"
