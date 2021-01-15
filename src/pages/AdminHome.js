@@ -39,8 +39,8 @@ function AdminHome(props) {
         const S3 = require('aws-sdk/clients/s3');
 
         AWS.config.update({
-            accessKeyId: 'AKIAJAXL4KKUGRQD4XWA',
-            secretAccessKey: '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',
+            accessKeyId: '',
+            secretAccessKey: '',
             region: 'us-east-1'
         });
 
@@ -93,7 +93,8 @@ function AdminHome(props) {
                   "Author":currentDetails.AUTHOR,
                   "Description":currentDetails.DESCRIPTION,
                   "RATING":currentDetails.RATING,
-                  "Comments":currentDetails.COMMENTS
+                  "Comments":currentDetails.COMMENTS,
+                  "URL": "https://cg-courselist.s3.amazonaws.com/"+data['Contents'][index]['Key']
               }
 
               newArr.push(newObj);
@@ -222,12 +223,14 @@ function AdminHome(props) {
         response = await response.json();
         if (response.stat === "200") {
 
+            getFilesFromBucket();
             //history.push("/adminhome");
             return;
         } else {
             setLoading(false);
         }
-        getFilesFromBucket();
+
+        
         // setLoginMessage(response.message)
     }
 
