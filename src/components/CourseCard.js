@@ -20,6 +20,11 @@ function CourseCard({ course, getFilesFromBucket }) {
         <Card fluid>
 
             <Card.Content>
+
+                <video width="450" height="300" controls >
+                    <source src={course.URL} type="video/mp4" />
+                </video>
+
                 <Image
                     floated="right"
                     size="mini"
@@ -33,7 +38,7 @@ function CourseCard({ course, getFilesFromBucket }) {
 
             </Card.Content>
 
-            <Card.Content extra>             
+            <Card.Content extra>
 
                 <DeleteCourse coursename={course.Name} getFilesFromBucket={getFilesFromBucket} />
 
