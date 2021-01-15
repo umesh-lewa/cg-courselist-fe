@@ -79,7 +79,8 @@ function Home(props) {
           "Author": currentDetails.AUTHOR,
           "Description": currentDetails.DESCRIPTION,
           "RATING": currentDetails.RATING,
-          "Comments": currentDetails.COMMENTS
+          "Comments": currentDetails.COMMENTS,
+          "URL": "https://cg-courselist.s3.amazonaws.com/"+data['Contents'][index]['Key']
         }
 
         newArr.push(newObj);
